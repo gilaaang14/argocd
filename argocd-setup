@@ -1,0 +1,14 @@
+# install argocd
+kubectl create namespace argocd
+wget https://raw.githubusercontent.com/argoproj/argo-cd/master/manifests/install.yaml
+kubectl apply -n argocd -f install.yaml
+
+argocd password
+xy0Bd6Cdx1QZRJhY
+
+kubectl create secret docker-registry acr-secrets \
+    --namespace argocd-motoskia \
+    --docker-server=foxutech.azurecr.io \
+    --docker-username=foxutech \
+    --docker-password=8owM7r+c0KGGxymAJ8291poPm0Wzx3BN
+

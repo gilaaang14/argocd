@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: domain-springboot
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: gilang-springboot.mandiri.com
+    http:
+      paths:
+      - backend:
+          serviceName: springboot-svc
+          servicePort: 3000
+        path: /

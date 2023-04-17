@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+   name: springboot-mandiri
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: gilang-springboot
+  template:
+    metadata:
+      labels:
+        app: gilang-springboot
+    spec:
+      containers:
+      - name: gilang-springboot
+        image: docker.io/gilaaang14/springboot-mandiri:prod.1
+        ports:
+        - containerPort: 8080
+        resources:
+          requests:
+            cpu: 100m
+            memory: 50Mi
+          limits:
+            cpu: 300m
+            memory: 200Mi
+      imagePullSecrets:
+        - name: regcred
